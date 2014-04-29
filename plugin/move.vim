@@ -27,6 +27,7 @@ function! s:ResetCursor()
 endfunction
 
 function! s:MoveBlockDown(start, end, count)
+    silent! undojoin
     let next_line = a:end + a:count
 
     if v:count > 0
@@ -47,6 +48,7 @@ function! s:MoveBlockDown(start, end, count)
 endfunction
 
 function! s:MoveBlockUp(start, end, count)
+    silent! undojoin
     let prev_line = a:start - a:count - 1
 
     if v:count > 0
@@ -67,6 +69,7 @@ function! s:MoveBlockUp(start, end, count)
 endfunction
 
 function! s:MoveLineUp(count) range
+    silent! undojoin
     let distance = a:count + 1
 
     if v:count > 0
@@ -89,6 +92,7 @@ function! s:MoveLineUp(count) range
 endfunction
 
 function! s:MoveLineDown(count) range
+    silent! undojoin
     let distance = a:count
 
     if v:count > 0
